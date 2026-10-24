@@ -1,8 +1,8 @@
 ---
 name: pr-writing
 description: >
-  How to write pull requests in the user's repositories: title, scope, body
-  sections, verification, and UI evidence. Use whenever opening, writing, or
+  How to write pull requests: title, scope, body sections, verification,
+  and UI evidence. Use whenever opening, writing, or
   editing a pull request title or description: "open a PR", "create pull
   request", "write the PR description", "update the PR body", gh pr create,
   gh pr edit.
@@ -10,9 +10,9 @@ description: >
 
 # Writing pull requests
 
-Applies to every repository the user owns or works in. If the repository has its
-own `CONTRIBUTING.md` or `.github/pull_request_template.md`, follow those first and
-use this skill to fill the gaps.
+If the repository has its own `CONTRIBUTING.md` or
+`.github/pull_request_template.md`, follow those first and use this skill to fill
+the gaps.
 
 ## Rules
 
@@ -21,14 +21,16 @@ use this skill to fill the gaps.
 2. **Before opening, check what already exists.** Run `gh pr list` and
    `git branch -a`. If a branch or PR for the same work exists, reuse it; do not
    create a second one.
-   - One branch per PR, branched from an up-to-date `main`, targeting `main`.
+   - One branch per PR, branched from the up-to-date default branch (usually
+     `main`) and targeting it.
    - No `gh stack` or stacked PRs unless the PRs genuinely depend on each other
      and the user asked for a stack.
 3. **One problem per PR.** Unrelated fixes, drive-by refactors and cleanups go in
    separate PRs. Everything that one problem needs (server, client, contract,
    tests, docs) stays together. Count underlying problems, not files or issues.
-4. **English** for PR titles, PR descriptions, and commit messages, even when the
-   conversation with the user is in another language.
+4. **Language:** write titles, descriptions, and commit messages in the
+   repository's language (English unless the project uses another), even when
+   the conversation with the user is in a different language.
 5. **Title:** Conventional Commits, plain language, describing the user-visible
    outcome rather than the code edit.
    - Good: `fix(web): new threads no longer spike CPU`
@@ -46,12 +48,12 @@ use this skill to fill the gaps.
    motion, timing, transitions, or interaction matter. Upload evidence to the PR
    on GitHub and embed or link it. Never commit PR-only screenshots or assets.
 
-## Verification on the user's VPS
+## When checks cannot run
 
-On the user's VPS, agents must not run heavy checks for T3 Code: tests,
-typechecks, linters, formatters, builds. Do not claim them. Write what was
-really done (read the code path, reproduced manually, inspected output) and say
-plainly: "Tests, typecheck and lint left to CI."
+If the environment or the user's instructions forbid running some checks (for
+example tests, typechecks, linters, or builds on a constrained machine), do not
+run them and do not claim them. Write what was really done (read the code path,
+reproduced manually, inspected output) and say plainly what was left to CI.
 
 ## Body template
 
